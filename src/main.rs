@@ -1,3 +1,5 @@
+slint::include_modules!();
+
 fn main() {
-    println!("Hello, world!");
+    let main_window = ChecklistApp::new().unwrap().run().unwrap();
 }

@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    slint_build::compile("ui/checklist.slint").unwrap();
 }

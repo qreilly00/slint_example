@@ -1,0 +1,13 @@
+component ChecklistContainer inherits Rectangle {
+    Rectangle {
+        width: 200px;
+        height: 100px;
+        background: green;
+    }
+}
+
+export component ChecklistApp inherits Window {
+    preferred-width: 200px;
+    preferred-height: 100px;
+    ChecklistContainer{}
+}
