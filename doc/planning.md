@@ -20,6 +20,8 @@ Make a program that enables the user to create and maintain a checklist system f
 
 ### Front end
 - Container with border and rounded edges
+    - Width and height = window - 32.
+    - Title
     - Create button
     - Delete all button.
 <br/>

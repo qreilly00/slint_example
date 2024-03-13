@@ -1,13 +1,83 @@
-component ChecklistContainer inherits Rectangle {
-    Rectangle {
-        width: 200px;
-        height: 100px;
-        background: green;
+import "../../font/RobotoMono-Regular.ttf";
+
+//import "../../image/delete.svg";
+//import "../../image/plus.svg";
+
+component Title inherits Text {
+    font-family: "Roboto Mono";
+    font-size: 18px;
+
+    color: black;
+
+    y: 5px;
+    horizontal-alignment: center;
+}
+
+component DeleteButton inherits Rectangle {
+    Image {
+        source: @image-url("../image/delete.svg");
+
+        colorize: black;
+
+        width: root.width;
+        height: root.height;
     }
+
+    width: 18px;
+    height: 18px;
+
+    x: 5px;
+    y: 5px;
+}
+
+component CreateButton inherits Rectangle {
+    Image {
+        source: @image-url("../image/plus.svg");
+
+        colorize: black;
+
+        width: root.width;
+        height: root.height;
+    }
+
+    in property <length> len_root_width;
+
+    width: 18px;
+    height: 18px;
+
+    x: len_root_width - (self.width + 5px);
+    y: 5px;
+}
+
+component ChecklistContainer inherits Rectangle {
+    in property <length> len_root_width;
+    in property <length> len_root_height;
+
+    width: len_root_width - 32px;
+    height: len_root_height - 32px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+
+    DeleteButton {}
+    CreateButton {len_root_width: root.width;}
+    Title {text: "Checklist App";}
+
+
 }
 
 export component ChecklistApp inherits Window {
-    preferred-width: 200px;
-    preferred-height: 100px;
-    ChecklistContainer{}
+    property <length> len_width: 512px;
+    property <length> len_height: 512px;
+
+    width: len_width;
+    height: len_height;
+
+    ChecklistContainer{
+        len_root_width: root.len_width;
+        len_root_height: root.len_height;
+    }
 }
