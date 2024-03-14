@@ -139,32 +139,34 @@ component Checklist inherits Rectangle {
             padding: 6px;
         }
         // Main Content
-        HorizontalLayout {
-            alignment: center;
+        ScrollView {
+            // background shape
+            Rectangle {
+                width: root.width;
+                height: root.height;
 
-            CheckableItem {
-                len_root_width: root.width;
+                background: white;
             }
-        }
-        HorizontalLayout {
-            alignment: center;
 
-            CheckableItem {
-                len_root_width: root.width;
-            }
-        }
-        HorizontalLayout {
-            alignment: center;
-
-            CheckableItem {
-                len_root_width: root.width;
-            }
-        }
-        HorizontalLayout {
-            alignment: center;
-
-            CheckableItem {
-                len_root_width: root.width;
+            // Vertical layout helps maintain a stack
+            VerticalLayout {
+                //Horizontal layout allows the alignment attribute to be assigned to the checkable item.
+                HorizontalLayout {
+                    alignment: center;
+                    CheckableItem {len_root_width: root.width;}
+                }
+                HorizontalLayout {
+                    alignment: center;
+                    CheckableItem {len_root_width: root.width;}
+                }
+                HorizontalLayout {
+                    alignment: center;
+                    CheckableItem {len_root_width: root.width;}
+                }
+                HorizontalLayout {
+                    alignment: center;
+                    CheckableItem {len_root_width: root.width;}
+                }
             }
         }
     }
@@ -193,16 +195,42 @@ component ChecklistContainer inherits Rectangle {
             padding: 6px;
         }
         // Main Content
-        HorizontalLayout {
-            alignment: center;
+        ScrollView {
+            // background shape
+            Rectangle {
+                width: root.width;
+                height: root.height;
 
-            Checklist {
-                len_root_width: root.width;
-                len_root_height: root.height;
+                background: white;
+            }
 
-                padding: 16px;
+            // Vertical layout helps maintain a stack
+            VerticalLayout {
+                //Horizontal layout allows the alignment attribute to be assigned to the checkable item.
+                HorizontalLayout {
+                    alignment: center;
 
-                str_title: "Checklist 1";
+                    Checklist {
+                        len_root_width: root.width;
+                        len_root_height: root.height;
+
+                        padding: 16px;
+
+                        str_title: "Checklist 1";
+                    }
+                }
+                HorizontalLayout {
+                    alignment: center;
+
+                    Checklist {
+                        len_root_width: root.width;
+                        len_root_height: root.height;
+
+                        padding: 16px;
+
+                        str_title: "Checklist 2";
+                    }
+                }
             }
         }
     }
