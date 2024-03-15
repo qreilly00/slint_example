@@ -1,0 +1,114 @@
+import {CheckBox}                                           from "std-widgets.slint";
+import {CreateButton, DeleteButton, TickBox, MoveButton}    from "buttons.slint";
+import {Title, TextBox}                                     from "text_components.slint";
+
+export {ChecklistContainer, Checklist, CheckableItem}
+
+component ChecklistContainer inherits Rectangle {
+    in property <length> len_root_width;
+    in property <length> len_root_height;
+
+    width: len_root_width - 32px;
+    height: len_root_height - 32px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+
+    VerticalLayout {
+        // Top Bar
+        HorizontalLayout {
+            CreateButton {}
+            Title {text: "Checklist App";}
+            DeleteButton {len_root_width: root.width;}
+
+            padding: 6px;
+        }
+    }
+}
+
+component Checklist inherits Rectangle {
+    in property <length> len_root_width;
+    in property <length> len_root_height;
+
+    in property <string> str_title;
+
+    width: len_root_width - 32px;
+    height: len_root_height - 64px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+
+    VerticalLayout {
+        // Top Bar
+        HorizontalLayout {
+            CreateButton {}
+            Title {text: str_title;}
+            DeleteButton {len_root_width: root.width;}
+
+            padding: 6px;
+        }
+    }
+}
+
+component CheckableItem inherits Rectangle {
+    in property <length> len_root_width;
+
+    width: len_root_width - 32px;
+    height: 32px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+
+    VerticalLayout {
+        alignment: center;
+
+        HorizontalLayout {
+            MoveButton {opacity: 50%;}
+            TickBox {}
+
+            HorizontalLayout {
+                TextBox {}
+
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: -4px;
+                padding-bottom: -4px;
+            }
+
+            DeleteButton {len_root_width: root.width;}
+
+            padding: 6px;
+        }
+    }
+}
+
+/* Keeping this for future use.
+ScrollView {
+    // Main Content
+    // Vertical layout helps maintain a stack
+    VerticalLayout {
+        //Horizontal layout allows the alignment attribute to be assigned to the checkable item.
+        HorizontalLayout {
+            alignment: center;
+
+            Checklist {
+                len_root_width: root.width;
+                len_root_height: root.height;
+
+                padding: 16px;
+
+                str_title: "Checklist 1";
+            }
+        }
+    }
+}
+*/

@@ -1,0 +1,21 @@
+import "../../font/RobotoMono-Regular.ttf";
+
+import {ScrollView}                                             from "std-widgets.slint";
+import {Title, CreateButton, DeleteButton, TickBox, MoveButton} from "buttons.slint";
+import {Title, TextBox}                                         from "text_components.slint";
+import {ChecklistContainer, Checklist, CheckableItem}           from "checklist_components.slint";
+
+export {ChecklistApp}
+
+component ChecklistApp inherits Window {
+    property <length> len_width: 512px;
+    property <length> len_height: 512px;
+
+    width: len_width;
+    height: len_height;
+
+    ChecklistContainer{
+        len_root_width: root.len_width;
+        len_root_height: root.len_height;
+    }
+}
