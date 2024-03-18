@@ -1,0 +1,55 @@
+import {CheckBox} from "std-widgets.slint";
+
+export component CreateButton inherits Rectangle {
+    Image {
+        source: @image-url("../image/plus.svg");
+
+        colorize: black;
+
+        width: root.width;
+        height: root.height;
+    }
+
+    width: 18px;
+    height: 18px;
+}
+
+export component DeleteButton inherits Rectangle {
+    Image {
+        source: @image-url("../image/delete.svg");
+
+        colorize: black;
+
+        width: root.width;
+        height: root.height;
+    }
+
+    in property <length> len_root_width;
+
+    width: 18px;
+    height: 18px;
+
+    x: len_root_width - (self.width + 5px);
+    y: 5px;
+}
+
+export component TickBox inherits CheckBox {
+    accessible-role: checkbox;
+
+    width: 18px;
+    height: 18px;
+}
+
+export component MoveButton inherits Rectangle {
+    Image {
+        source: @image-url("../image/move.png");
+
+        colorize: black;
+
+        width: root.width;
+        height: root.height;
+    }
+
+    width: 18px;
+    height: 18px;
+}

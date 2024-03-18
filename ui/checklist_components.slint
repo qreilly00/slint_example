@@ -1,0 +1,67 @@
+import {TextBox} from "text_components.slint";
+import {CreateButton, DeleteButton, TickBox, MoveButton} from "button_components.slint";
+
+export component CheckableItem inherits Rectangle {
+    in property <length> len_root_width;
+
+    width: len_root_width - 32px;
+    height: 32px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+
+    VerticalLayout {
+        alignment: center;
+
+        HorizontalLayout {
+            MoveButton {opacity: 50%;}
+            TickBox {}
+
+            HorizontalLayout {
+                TextBox {}
+
+                padding-left: 6px;
+                padding-right: 6px;
+                padding-top: -4px;
+                padding-bottom: -4px;
+            }
+
+            DeleteButton {len_root_width: root.width;}
+
+            padding: 6px;
+        }
+    }
+}
+
+export component Checklist inherits Rectangle {
+    in property <length> len_root_width;
+    in property <length> len_root_height;
+
+    in property <string> str_title;
+
+    width: len_root_width - 32px;
+    height: len_root_height - 64px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+}
+
+export component ChecklistContainer inherits Rectangle {
+    in property <length> len_root_width;
+    in property <length> len_root_height;
+
+    width: len_root_width - 32px;
+    height: len_root_height - 32px;
+
+    background: white;
+
+    border-color: black;
+    border-width: 1px;
+    border-radius: 6px;
+}
