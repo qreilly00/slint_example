@@ -10,8 +10,17 @@ export component CreateButton inherits Rectangle {
         height: root.height;
     }
 
+    TouchArea {
+        clicked => {
+            // Delegate to the user of this element
+            root.clicked();
+        }
+    }
+
     width: 18px;
     height: 18px;
+
+    callback clicked;
 }
 
 export component DeleteButton inherits Rectangle {
@@ -24,7 +33,16 @@ export component DeleteButton inherits Rectangle {
         height: root.height;
     }
 
+    TouchArea {
+        clicked => {
+            // Delegate to the user of this element
+            root.clicked();
+        }
+    }
+
     in property <length> len_root_width;
+
+    callback clicked;
 
     width: 18px;
     height: 18px;
@@ -34,7 +52,17 @@ export component DeleteButton inherits Rectangle {
 }
 
 export component TickBox inherits CheckBox {
+    /*TouchArea {
+        clicked => {
+            root.is_checked = !root.is_checked;
+        }
+    }*/
+
     accessible-role: checkbox;
+
+    callback clicked;
+
+    in property <bool> is_checked: false;
 
     width: 18px;
     height: 18px;

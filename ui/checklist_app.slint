@@ -17,15 +17,24 @@ export component ChecklistApp inherits Window {
     in-out property <[ChecklistInfo]> arr_checklist;
     in-out property <[CheckableItemInfo]> arr_checkable_item;
 
+    callback add_checklist();
+    callback add_checkable_item();
+
+    callback remove_all_checklist();
+
+    /*function create_checklist() {
+
+    }*/
+
     container := ChecklistContainer {
         len_root_width: len_width;
         len_root_height: len_height;
 
         VerticalLayout {
             HorizontalLayout {
-                CreateButton {}
+                CreateButton {clicked => {root.add_checklist()}}
                 Title {text: "Checklist App";}
-                DeleteButton {len_root_width: root.width;}
+                DeleteButton {len_root_width: root.width; clicked => {root.remove_all_checklist()}}
 
                 padding: 6px;
             }
@@ -40,7 +49,7 @@ export component ChecklistApp inherits Window {
 
                             VerticalLayout {
                                 HorizontalLayout {
-                                    CreateButton {}
+                                    CreateButton {clicked => {root.add_checkable_item()}}
                                     Title {text: current.str_title;}
                                     DeleteButton {len_root_width: check.width;}
 
@@ -48,16 +57,15 @@ export component ChecklistApp inherits Window {
                                 }
                                 ScrollView {
                                     //width: root.width;
-                                    /*VerticalLayout {
-                                        for i in arr_checklist : HorizontalLayout {
+                                    VerticalLayout {
+                                        for i in arr_checkable_item : HorizontalLayout {
                                             alignment: center;
-                                            Checklist {
-                                                len_root_width: root.width;
-                                                len_root_height: root.height;
+                                            CheckableItem {
+                                                len_root_width: check.width;
 
                                             }
                                         }
-                                    }*/
+                                    }
                                 }
                             }
                         }
